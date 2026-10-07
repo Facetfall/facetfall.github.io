@@ -24,7 +24,31 @@
       ],
       "link": "https://create.roblox.com/store/asset/113775792711183",
       "button": "Get it on the Creator Store",
-      "order": 1
+      "order": 1,
+      "search": "QuestHub",
+      "hooks": [
+        "Quests in|2 clicks",
+        "No scripting|needed",
+        "Daily quests|in 10 seconds",
+        "Make players|come back",
+        "Login streaks|in 1 click",
+        "Your game needs|a quest hub"
+      ],
+      "tags": [
+        "roblox quests",
+        "roblox quest system",
+        "how to make quests in roblox",
+        "roblox daily quests",
+        "roblox quest plugin",
+        "questhub"
+      ],
+      "captions": [
+        "Claim All in one tap",
+        "Select. Click. Done.",
+        "Every kind of quest",
+        "Players come back daily",
+        "Find quest bugs in seconds"
+      ]
     },
     {
       "title": "QuestHub Lite",
@@ -47,7 +71,27 @@
       ],
       "link": "https://create.roblox.com/store/asset/122182809914867",
       "button": "Get it free",
-      "order": 2
+      "order": 2,
+      "search": "QuestHub Lite",
+      "hooks": [
+        "Free quest|plugin",
+        "NPC quests|for free",
+        "Quests with|zero code",
+        "Free Roblox|quest maker"
+      ],
+      "tags": [
+        "roblox quests",
+        "roblox quest system",
+        "how to make quests in roblox",
+        "roblox daily quests",
+        "roblox quest plugin",
+        "questhub",
+        "free roblox plugin"
+      ],
+      "captions": [
+        "Select. Click. Done.",
+        "Find quest bugs in seconds"
+      ]
     },
     {
       "title": "Racing game",
