@@ -74,3 +74,24 @@ content:
           - name: order
             label: Order (smaller number = shown first)
             type: number
+          # ---- used by the daily Shorts bot (Facetfall/shorts-bot), not shown on the site ----
+          - name: hooks
+            label: "Shorts: opening lines"
+            description: "One per video, | splits it into two lines, e.g. Quests in|2 clicks"
+            type: string
+            list: true
+          - name: captions
+            label: "Shorts: picture captions"
+            description: One short line per picture, same order as Pictures
+            type: string
+            list: true
+          - name: search
+            label: "Shorts: what to search on the Creator Store"
+            type: string
+          - name: tags
+            label: "Shorts: extra YouTube tags"
+            type: string
+            list: true
+          - name: no_shorts
+            label: "Shorts: leave this out of the daily Shorts"
+            type: boolean
