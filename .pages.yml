@@ -1,0 +1,76 @@
+# Pages CMS (app.pagescms.org) - the editor for the Facetfall Studios site.
+# Everyone you invite can only edit what is listed here (games & plugins),
+# not the site's code.
+media:
+  input: img/uploads
+  output: img/uploads
+
+content:
+  - name: catalog
+    label: Games & plugins
+    type: file
+    path: data/catalog.json
+    format: json
+    fields:
+      - name: items
+        label: Games & plugins
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Name
+            type: string
+            required: true
+          - name: kind
+            label: Game or plugin
+            type: select
+            required: true
+            options:
+              values:
+                - { value: game, label: Game }
+                - { value: plugin, label: Plugin }
+          - name: status
+            label: Status
+            description: "Coming soon = not out yet. Released = out (shows NEW for 30 days after the release date). Old = older stuff, shown at the bottom."
+            type: select
+            required: true
+            options:
+              values:
+                - { value: upcoming, label: Coming soon }
+                - { value: released, label: Released }
+                - { value: old, label: Old release }
+          - name: recommended
+            label: Recommended (shows at the top)
+            type: boolean
+          - name: release_date
+            label: Release date
+            description: Leave empty if it isn't out yet.
+            type: date
+          - name: price
+            label: Price
+            description: "e.g. $9.99, Free, or leave empty for games"
+            type: string
+          - name: tagline
+            label: Short description
+            type: text
+          - name: features
+            label: Feature list
+            type: string
+            list: true
+          - name: icon
+            label: Icon (square)
+            type: image
+          - name: images
+            label: Pictures
+            type: image
+            list: true
+          - name: link
+            label: Link (Roblox game, Creator Store page...)
+            type: string
+          - name: button
+            label: Button text
+            description: "e.g. Play now, Get it free"
+            type: string
+          - name: order
+            label: Order (smaller number = shown first)
+            type: number

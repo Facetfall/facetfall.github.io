@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facetfall Studios - Roblox games & creator tools</title>
+<meta name="description" content="Facetfall Studios makes Roblox games and Studio plugins. QuestHub: quest systems in two clicks, no scripting.">
+<meta property="og:title" content="Facetfall Studios">
+<meta property="og:description" content="Roblox games & creator tools. QuestHub - quest systems in two clicks, no scripting.">
+<meta property="og:image" content="img/cover.jpg">
+<meta name="theme-color" content="#0a0d1a">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070913; --bg2: #0d1124; --card: rgba(255,255,255,.04); --line: rgba(255,255,255,.09);
+    --text: #f2f5ff; --sub: #9aa3c4; --cyan: #5fe0ff; --violet: #8a5cff; --gold: #ffc440; --green: #3fd27a;
+    --grad: linear-gradient(120deg, var(--cyan), var(--violet));
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, "Segoe UI", system-ui, sans-serif; line-height: 1.55; overflow-x: hidden; }
+  a { color: inherit; }
+  h1, h2, h3, .display { font-family: "Space Grotesk", Inter, sans-serif; letter-spacing: -.02em; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 22px; }
+  .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ---------- background: drifting facet shards ---------- */
+  .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; background:
+    radial-gradient(900px 600px at 85% -10%, rgba(138,92,255,.28), transparent 60%),
+    radial-gradient(800px 600px at -10% 30%, rgba(95,224,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 60% 110%, rgba(255,196,64,.10), transparent 60%), var(--bg); }
+  .shard { position: absolute; top: -10%; width: var(--s); height: var(--s); opacity: .55;
+    clip-path: polygon(50% 0, 100% 40%, 50% 100%, 0 40%);
+    background: linear-gradient(160deg, rgba(160,240,255,.9), rgba(122,63,224,.6));
+    animation: fall var(--d) linear infinite; animation-delay: var(--delay); filter: drop-shadow(0 0 12px rgba(95,224,255,.5)); }
+  @keyframes fall { from { transform: translateY(-10vh) rotate(0deg); } to { transform: translateY(120vh) rotate(var(--r)); } }
+
+  /* ---------- nav ---------- */
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(7,9,19,.6); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; height: 66px; gap: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 19px; font-family: "Space Grotesk", sans-serif; }
+  .brand img { width: 38px; height: 38px; }
+  nav .links { margin-left: auto; display: flex; gap: 22px; }
+  nav .links a { color: var(--sub); text-decoration: none; font-weight: 600; font-size: 15px; transition: color .2s; }
+  nav .links a:hover { color: var(--text); }
+
+  /* ---------- buttons ---------- */
+  .btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 14px; font-weight: 800; text-decoration: none; font-size: 16px; transition: transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-3px); }
+  .btn.primary { background: var(--grad); color: #050712; box-shadow: 0 10px 40px rgba(95,224,255,.35); }
+  .btn.primary:hover { box-shadow: 0 16px 50px rgba(138,92,255,.5); }
+  .btn.gold { background: var(--gold); color: #1d1404; box-shadow: 0 10px 34px rgba(255,196,64,.3); }
+  .btn.green { background: var(--green); color: #04140a; box-shadow: 0 10px 34px rgba(63,210,122,.3); }
+  .btn.ghost { border: 1.5px solid var(--line); background: rgba(255,255,255,.03); }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 70px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .eyebrow { display: inline-flex; gap: 8px; align-items: center; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--sub); font-weight: 600; font-size: 14px; }
+  .eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  .hero h1 { font-size: clamp(44px, 7vw, 86px); line-height: .98; margin: 20px 0 18px; font-weight: 700; }
+  .hero p { font-size: 20px; color: var(--sub); max-width: 560px; margin: 0 0 30px; }
+  .phone { justify-self: center; width: min(320px, 80vw); aspect-ratio: 9/16; border-radius: 38px; padding: 10px; background: linear-gradient(160deg, rgba(95,224,255,.6), rgba(138,92,255,.6)); box-shadow: 0 30px 90px rgba(95,224,255,.25), 0 0 0 1px rgba(255,255,255,.1) inset; transform: rotate(3deg); animation: float 6s ease-in-out infinite; }
+  .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 30px; display: block; background: #000; }
+  @keyframes float { 50% { transform: rotate(3deg) translateY(-14px); } }
+
+  /* ---------- marquee ---------- */
+  .marquee { border-block: 1px solid var(--line); background: rgba(255,255,255,.02); overflow: hidden; padding: 18px 0; margin-top: 40px; }
+  .marquee .track { display: flex; gap: 46px; width: max-content; animation: scroll 28s linear infinite; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .04em; color: var(--sub); }
+  .marquee .track span::before { content: "◆"; margin-right: 46px; color: var(--cyan); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- sections ---------- */
+  section { padding: 90px 0; }
+  .kicker { color: var(--cyan); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; }
+  h2 { font-size: clamp(34px, 5vw, 54px); margin: 8px 0 12px; line-height: 1.05; }
+  .lead { color: var(--sub); font-size: 19px; margin: 0 0 44px; max-width: 640px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .card { position: relative; border-radius: 24px; padding: 30px; background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 16px; transition: transform .25s, border-color .25s; transform-style: preserve-3d; }
+  .card:hover { border-color: rgba(95,224,255,.45); }
+  .card.hot::before { content: ""; position: absolute; inset: -1px; border-radius: 24px; padding: 1.5px; background: linear-gradient(120deg, var(--gold), var(--violet), var(--cyan)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+  .card .top { display: flex; align-items: center; gap: 16px; }
+  .card .top img { width: 78px; height: 78px; border-radius: 18px; }
+  .card h3 { margin: 0; font-size: 28px; }
+  .tag { display: inline-block; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 999px; }
+  .tag.paid { background: rgba(255,196,64,.14); color: var(--gold); }
+  .tag.free { background: rgba(63,210,122,.14); color: var(--green); }
+  .card p { margin: 0; color: var(--sub); font-size: 17px; }
+  .checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .checks li { padding-left: 30px; position: relative; }
+  .checks li::before { content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 6px; background: var(--grad); clip-path: polygon(50% 0, 100% 40%, 50% 100%, 0 40%); }
+  .card .row { margin-top: auto; padding-top: 6px; }
+
+  .gallery { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 34px 2px 12px; margin-top: 8px; }
+  .gallery img { flex: 0 0 min(560px, 82vw); scroll-snap-align: start; border-radius: 16px; border: 1px solid var(--line); cursor: zoom-in; transition: transform .25s; }
+  .gallery img:hover { transform: translateY(-6px); }
+  .gallery::-webkit-scrollbar { height: 8px; } .gallery::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+  /* ---------- games ---------- */
+  .game { min-height: 340px; overflow: hidden; justify-content: flex-end; background: linear-gradient(135deg, #0d1640, #1b0f36 55%, #2a1608); }
+  .game .lines { position: absolute; inset: 0; background: repeating-linear-gradient(100deg, transparent 0 60px, rgba(95,224,255,.07) 60px 62px); animation: speed 1.2s linear infinite; }
+  @keyframes speed { to { background-position: -124px 0; } }
+  .game > *:not(.lines) { position: relative; }
+  .soon { align-self: flex-start; font-weight: 900; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; background: var(--gold); color: #1d1404; box-shadow: 0 0 24px rgba(255,196,64,.5); }
+  .game h3 { font-size: 40px; }
+
+  /* ---------- join ---------- */
+  .join { text-align: center; border-radius: 30px; padding: 60px 26px; background: linear-gradient(135deg, rgba(95,224,255,.12), rgba(138,92,255,.16)); border: 1px solid var(--line); }
+  .join img { width: 110px; height: 110px; margin-bottom: 10px; filter: drop-shadow(0 0 30px rgba(95,224,255,.5)); }
+  .join .row { justify-content: center; }
+
+  footer { padding: 40px 0 60px; color: var(--sub); font-size: 15px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .lightbox { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.9); cursor: zoom-out; }
+  .lightbox.open { display: flex; } .lightbox img { max-width: 100%; max-height: 100%; border-radius: 14px; }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-inline: auto; }
+    .hero .row { justify-content: center; }
+    nav .links { display: none; }
+    section { padding: 64px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ---------- catalog (built from data/catalog.json) ---------- */
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-weight: 900; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; }
+  .chip.new { background: var(--green); color: #04140a; box-shadow: 0 0 18px rgba(63,210,122,.55); animation: pulse 1.6s infinite; }
+  .chip.soon { background: var(--gold); color: #1d1404; box-shadow: 0 0 18px rgba(255,196,64,.45); }
+  .chip.star { background: var(--grad); color: #050712; }
+  .chip.kind, .chip.old { background: rgba(255,255,255,.07); color: var(--sub); }
+  .card .cover { margin: -30px -30px 6px; height: 190px; border-radius: 24px 24px 0 0; background-size: cover; background-position: center top; position: relative; }
+  .card .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(7,9,19,.85)); border-radius: inherit; }
+  .card.soon-card { overflow: hidden; background: linear-gradient(135deg, #0d1640, #1b0f36 55%, #2a1608); }
+  .card.soon-card .lines { position: absolute; inset: 0; background: repeating-linear-gradient(100deg, transparent 0 60px, rgba(95,224,255,.07) 60px 62px); animation: speed 1.2s linear infinite; pointer-events: none; }
+  .card.soon-card > *:not(.lines) { position: relative; }
+  .card { cursor: pointer; }
+  .card.old-card { opacity: .78; }
+  .grid.small { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .modal { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(3,4,10,.86); backdrop-filter: blur(6px); }
+  .modal.open { display: flex; }
+  .modal .box { width: min(980px, 100%); max-height: 92vh; overflow: auto; background: #0d1124; border: 1px solid var(--line); border-radius: 24px; padding: 26px; }
+  .modal .close { float: right; background: rgba(255,255,255,.08); border: 0; color: var(--text); width: 40px; height: 40px; border-radius: 12px; font-size: 20px; cursor: pointer; }
+  .modal .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 18px 0; }
+  .modal .shots img { flex: 0 0 min(640px, 86%); border-radius: 14px; border: 1px solid var(--line); scroll-snap-align: start; }
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="brand/emblem.svg" alt="">Facetfall Studios</a>
+    <div class="links">
+      <a href="#catalog">Our stuff</a>
+      <a href="#soon">Coming soon</a>
+      <a href="#join">Join us</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b> QuestHub 2.2 is out</span>
+      <h1>Roblox games &amp; tools that <span class="grad">shine.</span></h1>
+      <p>We're Facetfall Studios. We build Roblox games, and the Studio plugins that make building them fast.</p>
+      <div class="row">
+        <a class="btn primary" href="#catalog">See our stuff</a>
+        <a class="btn ghost" href="https://www.roblox.com/communities/8198214/Facetfall-Studios" target="_blank" rel="noopener">Join the group</a>
+      </div>
+    </div>
+    <div class="phone">
+      <video src="media/questhub_short.mp4" poster="media/questhub_poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Quests in 2 clicks</span><span>No scripting</span><span>Daily quests</span><span>Login streaks</span><span>Achievements</span><span>Claim all</span><span>Community goals</span><span>Debug panel</span>
+      <span>Quests in 2 clicks</span><span>No scripting</span><span>Daily quests</span><span>Login streaks</span><span>Achievements</span><span>Claim all</span><span>Community goals</span><span>Debug panel</span>
+    </div>
+  </div>
+</header>
+
+<main id="catalog">
+  <noscript><section><div class="wrap"><p class="lead">Turn on JavaScript to see our games and plugins.</p></div></section></noscript>
+</main>
+
+<section id="join">
+  <div class="wrap">
+    <div class="join reveal">
+      <img src="brand/emblem.svg" alt="Facetfall Studios emblem">
+      <h2>Join <span class="grad">Facetfall Studios</span></h2>
+      <p class="lead" style="margin-inline:auto">Be first to play our games and get our tools. Join the group on Roblox.</p>
+      <div class="row">
+        <a class="btn primary" href="https://www.roblox.com/communities/8198214/Facetfall-Studios" target="_blank" rel="noopener">Join on Roblox</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; <span id="year">2026</span> Facetfall Studios</div>
+    <div>Not affiliated with Roblox Corporation.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal"><div class="box"></div></div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // falling facet shards in the background
+  const sky = document.getElementById("sky");
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement("div");
+    s.className = "shard";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.setProperty("--s", 8 + Math.random() * 22 + "px");
+    s.style.setProperty("--d", 14 + Math.random() * 18 + "s");
+    s.style.setProperty("--delay", -Math.random() * 30 + "s");
+    s.style.setProperty("--r", (Math.random() > .5 ? 1 : -1) * (180 + Math.random() * 360) + "deg");
+    sky.appendChild(s);
+  }
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // tilt cards toward the mouse
+  function setupTilt() {
+    if (!matchMedia("(hover: hover)").matches) return;
+    document.querySelectorAll(".tilt:not([data-tilt])").forEach(card => {
+      card.dataset.tilt = "1";
+      card.addEventListener("mousemove", e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+      });
+      card.addEventListener("mouseleave", () => (card.style.transform = ""));
+    });
+  }
+  setupTilt();
+
+  // ---------- catalog: games & plugins come from data/catalog.json (edited in Pages CMS) ----------
+  const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const NEW_DAYS = 30;
+  const isNew = it => it.status === "released" && it.release_date && (Date.now() - new Date(it.release_date)) / 864e5 <= NEW_DAYS;
+  const btnClass = it => /free/i.test(it.price || "") ? "green" : it.kind === "game" ? "primary" : "gold";
+  const safeUrl = u => /^(https?:)?\/\//i.test(u || "") || /^[\w./-]+$/.test(u || "") ? u : "";
+
+  function chips(it) {
+    const c = [];
+    if (it.recommended) c.push('<span class="chip star">Recommended</span>');
+    if (it.status === "upcoming") c.push('<span class="chip soon">Coming soon</span>');
+    if (isNew(it)) c.push('<span class="chip new">Just released</span>');
+    if (it.status === "old") c.push('<span class="chip old">Older release</span>');
+    c.push(`<span class="chip kind">${it.kind === "game" ? "Game" : "Plugin"}</span>`);
+    return `<div class="chips">${c.join("")}</div>`;
+  }
+
+  function card(it, i) {
+    const soon = it.status === "upcoming";
+    const cover = safeUrl((it.images || [])[0]);
+    const priceTag = it.price ? `<span class="tag ${/free/i.test(it.price) ? "free" : "paid"}">${esc(it.price)}</span>` : "";
+    const link = safeUrl(it.link);
+    return `<article class="card reveal tilt ${soon ? "soon-card" : ""} ${it.status === "old" ? "old-card" : ""} ${it.recommended ? "hot" : ""}" data-i="${i}">
+      ${soon ? '<div class="lines"></div>' : ""}
+      ${cover && !soon ? `<div class="cover" style="background-image:url('${esc(cover)}')"></div>` : ""}
+      ${chips(it)}
+      <div class="top">${safeUrl(it.icon) ? `<img src="${esc(it.icon)}" alt="">` : ""}<div><h3>${esc(it.title)}</h3>${priceTag}</div></div>
+      <p>${esc(it.tagline)}</p>
+      ${(it.features || []).length ? `<ul class="checks">${it.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+      ${link && !soon ? `<div class="row"><a class="btn ${btnClass(it)}" href="${esc(link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(it.button || "Open")}</a></div>` : ""}
+    </article>`;
+  }
+
+  function section(id, kicker, title, accent, lead, list, small) {
+    if (!list.length) return "";
+    return `<section id="${id}"><div class="wrap">
+      <div class="reveal"><div class="kicker">${kicker}</div><h2>${title} <span class="grad">${accent}</span></h2>${lead ? `<p class="lead">${lead}</p>` : ""}</div>
+      <div class="grid ${small ? "small" : ""}">${list.map(it => card(it, ITEMS.indexOf(it))).join("")}</div>
+    </div></section>`;
+  }
+
+  let ITEMS = [];
+  fetch("data/catalog.json", { cache: "no-cache" }).then(r => r.json()).then(data => {
+    ITEMS = (data.items || []).slice().sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+    const live = ITEMS.filter(it => it.status === "released");
+    const shown = new Set();
+    const take = list => list.filter(it => !shown.has(it) && shown.add(it));
+    const html = [
+      section("recommended", "Recommended", "Start", "here.", "Our favourites right now.", take(ITEMS.filter(it => it.recommended && it.status !== "old"))),
+      section("new", "Just released", "Fresh", "drops.", "Out in the last " + NEW_DAYS + " days.", take(ITEMS.filter(isNew))),
+      section("soon", "Coming soon", "What we're", "building.", "Not out yet - join the group to be first.", take(ITEMS.filter(it => it.status === "upcoming"))),
+      section("games", "Games", "Play our", "games.", "", take(live.filter(it => it.kind === "game"))),
+      section("plugins", "Plugins", "Tools for", "creators.", "Roblox Studio plugins - no scripting needed.", take(live.filter(it => it.kind === "plugin"))),
+      section("older", "Older releases", "From the", "vault.", "", take(ITEMS.filter(it => it.status === "old")), true),
+    ].join("");
+    document.getElementById("catalog").innerHTML = html;
+    document.querySelectorAll("#catalog .reveal").forEach(el => io.observe(el));
+    setupTilt();
+    document.querySelectorAll("#catalog .card").forEach(c => c.addEventListener("click", () => openItem(ITEMS[+c.dataset.i])));
+  }).catch(() => {
+    document.getElementById("catalog").innerHTML = '<section><div class="wrap"><p class="lead">Could not load the list of games and plugins.</p></div></section>';
+  });
+
+  const modal = document.getElementById("modal");
+  function openItem(it) {
+    const shots = (it.images || []).filter(safeUrl).map(src => `<img src="${esc(src)}" alt="" loading="lazy">`).join("");
+    const link = safeUrl(it.link);
+    modal.querySelector(".box").innerHTML = `<button class="close" aria-label="Close">&times;</button>
+      ${chips(it)}<h2 style="margin-top:12px">${esc(it.title)}</h2>
+      <p class="lead" style="margin-bottom:0">${esc(it.tagline)}</p>
+      ${shots ? `<div class="shots">${shots}</div>` : ""}
+      ${(it.features || []).length ? `<ul class="checks" style="margin:16px 0">${it.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+      ${link && it.status !== "upcoming" ? `<a class="btn ${btnClass(it)}" href="${esc(link)}" target="_blank" rel="noopener">${esc(it.button || "Open")}</a>` : ""}`;
+    modal.classList.add("open");
+    modal.querySelector(".close").onclick = () => modal.classList.remove("open");
+  }
+  modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("open"); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("open"); });
+</script>
+</body>
+</html>
