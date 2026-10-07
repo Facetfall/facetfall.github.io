@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "title": "QuestHub Pro",
+      "kind": "plugin",
+      "status": "released",
+      "recommended": true,
+      "release_date": "2026-10-06",
+      "price": "$9.99",
+      "tagline": "The full quest system top Roblox games have - in your game, in two clicks.",
+      "features": [
+        "Quest hub with Claim All, dailies and rerolls",
+        "Login streaks, achievements, events",
+        "Community goals, collections, story choices",
+        "Debug panel, quest map, Check Setup"
+      ],
+      "icon": "img/questhub_icon.png",
+      "images": [
+        "img/questhub_1.jpg",
+        "img/questhub_2.jpg",
+        "img/questhub_3.jpg",
+        "img/questhub_4.jpg",
+        "img/questhub_5.jpg"
+      ],
+      "link": "https://create.roblox.com/store/asset/113775792711183",
+      "button": "Get it on the Creator Store",
+      "order": 1
+    },
+    {
+      "title": "QuestHub Lite",
+      "kind": "plugin",
+      "status": "released",
+      "recommended": false,
+      "release_date": "2026-10-06",
+      "price": "Free",
+      "tagline": "Try QuestHub free. Your quests carry over when you upgrade.",
+      "features": [
+        "NPC quest givers with ! and ? markers",
+        "On-screen tracker and waypoints",
+        "Quest chains, choices, grind quests",
+        "Safe saving, readable code"
+      ],
+      "icon": "img/questhub_lite_icon.png",
+      "images": [
+        "img/questhub_2.jpg",
+        "img/questhub_5.jpg"
+      ],
+      "link": "https://create.roblox.com/store/asset/122182809914867",
+      "button": "Get it free",
+      "order": 2
+    },
+    {
+      "title": "Racing game",
+      "kind": "game",
+      "status": "upcoming",
+      "recommended": false,
+      "release_date": "",
+      "price": "",
+      "tagline": "Open-world city racing. Build your garage, tune your cars, race your friends.",
+      "features": [],
+      "icon": "",
+      "images": [],
+      "link": "",
+      "button": "",
+      "order": 3
+    }
+  ]
+}
