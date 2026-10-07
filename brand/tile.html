@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 512px; height: 512px; background: transparent; }
+  .tile { position: relative; width: 512px; height: 512px; border-radius: 112px; overflow: hidden;
+    background:
+      radial-gradient(260px 220px at 50% 42%, rgba(80,120,255,.55), transparent 70%),
+      radial-gradient(300px 260px at 80% 90%, rgba(138,92,255,.45), transparent 70%),
+      linear-gradient(160deg, #141a3a, #0a0d1e 60%, #120a24); }
+  /* faint diamond lattice */
+  .tile::before { content: ""; position: absolute; inset: 0; opacity: .12;
+    background-image: linear-gradient(45deg, #9fe9ff 1px, transparent 1px), linear-gradient(-45deg, #9fe9ff 1px, transparent 1px);
+    background-size: 40px 40px; mask-image: radial-gradient(circle at 50% 45%, #000 0, transparent 70%); }
+  /* rim light */
+  .tile::after { content: ""; position: absolute; inset: 0; border-radius: 112px; padding: 6px;
+    background: linear-gradient(140deg, rgba(160,240,255,.9), rgba(95,224,255,.1) 40%, rgba(138,92,255,.15) 60%, rgba(180,140,255,.9));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+  .tile img { position: absolute; left: 18px; top: 22px; width: 476px; height: 476px; }
+</style></head>
+<body><div class="tile"><img src="gem.svg"></div></body></html>

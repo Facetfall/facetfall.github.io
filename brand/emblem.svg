@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- facet lighting: light from the upper left -->
+    <linearGradient id="fA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9feff"/><stop offset="1" stop-color="#7fe6ff"/></linearGradient>
+    <linearGradient id="fB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#bff4ff"/></linearGradient>
+    <linearGradient id="fC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9eeeff"/><stop offset="1" stop-color="#46b9f2"/></linearGradient>
+    <linearGradient id="fD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5aa8ff"/><stop offset="1" stop-color="#4a56e8"/></linearGradient>
+    <linearGradient id="fE" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fd4ff"/><stop offset="1" stop-color="#2c7fe0"/></linearGradient>
+    <linearGradient id="fF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c6f6ff"/><stop offset="1" stop-color="#5fb7ff"/></linearGradient>
+    <linearGradient id="fG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6c7bff"/><stop offset="1" stop-color="#3a2fbf"/></linearGradient>
+    <linearGradient id="fH" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a5cff"/><stop offset="1" stop-color="#4a1ca8"/></linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="trail" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#8de6ff" stop-opacity=".9"/><stop offset="1" stop-color="#8de6ff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="shardA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9feff"/><stop offset="1" stop-color="#5fb7ff"/></linearGradient>
+    <linearGradient id="shardB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b48bff"/><stop offset="1" stop-color="#5a2bd0"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="20"/></filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+    <clipPath id="gemclip"><polygon points="96,196 180,112 332,112 416,196 256,404"/></clipPath>
+  </defs>
+
+  <polygon points="96,196 180,112 332,112 416,196 256,404" fill="#4fc8ff" opacity=".55" filter="url(#glow)"/>
+  <polygon points="300,250 416,196 256,404" fill="#8a5cff" opacity=".45" filter="url(#glow)"/>
+
+  <g stroke="#0a1430" stroke-opacity=".55" stroke-width="2.5" stroke-linejoin="round">
+    <polygon points="96,196 180,112 176,196" fill="url(#fA)"/>
+    <polygon points="180,112 256,112 256,196 176,196" fill="url(#fB)"/>
+    <polygon points="256,112 332,112 336,196 256,196" fill="url(#fC)"/>
+    <polygon points="332,112 416,196 336,196" fill="url(#fD)"/>
+    <polygon points="96,196 176,196 256,404" fill="url(#fE)"/>
+    <polygon points="176,196 256,196 256,404" fill="url(#fF)"/>
+    <polygon points="256,196 336,196 256,404" fill="url(#fG)"/>
+    <polygon points="336,196 416,196 352,290 318,300 256,404" fill="url(#fH)"/>
+  </g>
+
+  <g clip-path="url(#gemclip)">
+    <polyline points="140,196 216,112 296,196 256,404" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2"/>
+    <polyline points="216,196 256,300 296,196" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2"/>
+    <rect x="120" y="60" width="70" height="420" fill="url(#shine)" opacity=".55" transform="rotate(28 256 256)"/>
+  </g>
+  <line x1="100" y1="196" x2="412" y2="196" stroke="#fff" stroke-opacity=".75" stroke-width="2.5"/>
+
+  <g>
+    <path d="M318 300 L352 290 L363 330 Z" fill="url(#shardA)" stroke="#0a1430" stroke-opacity=".5" stroke-width="2" transform="translate(28 34) rotate(18 340 310)"/>
+    <line x1="352" y1="338" x2="326" y2="308" stroke="url(#trail)" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <path d="M0 0 L22 -6 L14 22 Z" fill="url(#shardB)" stroke="#0a1430" stroke-opacity=".5" stroke-width="2" transform="translate(398 392) rotate(-12)"/>
+    <line x1="402" y1="398" x2="372" y2="364" stroke="url(#trail)" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+    <path d="M0 0 L13 -3 L8 14 Z" fill="url(#shardA)" transform="translate(432 440) rotate(10)"/>
+    <line x1="436" y1="446" x2="414" y2="420" stroke="url(#trail)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+  </g>
+
+  <g fill="#fff">
+    <path d="M206 128 L211 146 L229 151 L211 156 L206 174 L201 156 L183 151 L201 146 Z" filter="url(#soft)" opacity=".9"/>
+    <path d="M206 128 L211 146 L229 151 L211 156 L206 174 L201 156 L183 151 L201 146 Z"/>
+    <path d="M412 168 L415 178 L425 181 L415 184 L412 194 L409 184 L399 181 L409 178 Z"/>
+  </g>
+</svg>
